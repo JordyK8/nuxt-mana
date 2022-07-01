@@ -30,7 +30,7 @@
               3.1<IconMdi:star class="text-xs align-top" />
             </div>
             <span class="ml-2"> {{ review.date }}</span>
-            <p class="ml-10">{{review.content}}</p>
+            <p class="ml-10">{{ review.content }}</p>
           </div>
         </div>
       </PageSection>
@@ -42,6 +42,14 @@
 definePageMeta({
   layout: 'client',
 })
+
+// lifecycle
+onMounted(() => {
+  const router = useRouter()
+  console.log(router.currentRoute.value.params)
+  
+})
+
 const props = defineProps({
   client: {
     type: Object,

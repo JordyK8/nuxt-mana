@@ -7,8 +7,8 @@ export interface IIdentityState {
 
 export const useIdentity = defineStore('identity', {
   state: (): IIdentityState => ({
-    firstName: 'Alfian',
-    lastName: 'Dwi',
+    firstName: 'Jordy',
+    lastName: 'Kokelaar',
   }),
   actions: {
     setFirstName(firstName: string) {
@@ -18,8 +18,8 @@ export const useIdentity = defineStore('identity', {
       this.lastName = lastName
     },
     reset() {
-      this.firstName = 'Alfian'
-      this.lastName = 'Dwi'
+      this.firstName = 'Jordy'
+      this.lastName = 'Kokelaar'
     },
   },
   getters: {

@@ -54,7 +54,7 @@
                   v-for="item of items"
                   :key="item._id"
                   :item="item"
-                  @click="gotoPage(item._id)"
+                  @click="gotoPage(item.name.replaceAll(' ','').toLowerCase(), item.city)"
                 />
               </div>
               <!-- Nearby -->
@@ -89,6 +89,7 @@ const props = defineProps({
       return [
         {
           _id: '23dkjhkjd23',
+          city: 'Miri',
           image:
             'https://images.pexels.com/photos/1267320/pexels-photo-1267320.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
           distance: {
@@ -129,8 +130,11 @@ const props = defineProps({
 })
 
 // methods
-const gotoPage = (id) => {
-  console.log('id', id)
+const gotoPage = (name: string, city: string) => {
+  const router = useRouter()
+  console.log(name);
+  
+  router.push(`/${city}/${name}`)
 }
 const page = usePage()
 const router = useRouter()
