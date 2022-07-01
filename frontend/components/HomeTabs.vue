@@ -50,26 +50,11 @@
                   block: page.home.openTab === 1,
                 }"
               >
-                <AddCard
-                  v-for="(item, i) in [
-                    {
-                      path: '/category/sub-category/another-sub-category/hu9uihiubu7ig',
-                    },
-                    {
-                      path: '/category/sub-category/another-sub-category/hu9uihiubu7ig',
-                    },
-                    {
-                      path: '/category/sub-category/another-sub-category/hu9uihiubu7ig',
-                    },
-                    {
-                      path: '/category/sub-category/another-sub-category/hu9uihiubu7ig',
-                    },
-                    {
-                      path: '/category/sub-category/another-sub-category/hu9uihiubu7ig',
-                    },
-                  ]"
-                  :key="i"
-                  @click="router.push(item.path)"
+                <CompanyCard
+                  v-for="item of items"
+                  :key="item._id"
+                  :item="item"
+                  @click="gotoPage(item._id)"
                 />
               </div>
               <!-- Nearby -->
@@ -79,29 +64,7 @@
                   hidden: page.home.openTab !== 2,
                   block: page.home.openTab === 2,
                 }"
-              >
-                <AddCard
-                  v-for="(item, i) in [
-                    {
-                      path: '/category/sub-category/another-sub-category/hu9uihiubu7ig',
-                    },
-                    {
-                      path: '/category/sub-category/another-sub-category/hu9uihiubu7ig',
-                    },
-                    {
-                      path: '/category/sub-category/another-sub-category/hu9uihiubu7ig',
-                    },
-                    {
-                      path: '/category/sub-category/another-sub-category/hu9uihiubu7ig',
-                    },
-                    {
-                      path: '/category/sub-category/another-sub-category/hu9uihiubu7ig',
-                    },
-                  ]"
-                  :key="i"
-                  @click="router.push(item.path)"
-                />
-              </div>
+              ></div>
               <!-- Trending -->
               <div
                 class="flex flex-wrap justify-evenly overflow-y-hidden p-2"
@@ -109,29 +72,7 @@
                   hidden: page.home.openTab !== 3,
                   block: page.home.openTab === 3,
                 }"
-              >
-                <AddCard
-                  v-for="(item, i) in [
-                    {
-                      path: '/category/sub-category/another-sub-category/hu9uihiubu7ig',
-                    },
-                    {
-                      path: '/category/sub-category/another-sub-category/hu9uihiubu7ig',
-                    },
-                    {
-                      path: '/category/sub-category/another-sub-category/hu9uihiubu7ig',
-                    },
-                    {
-                      path: '/category/sub-category/another-sub-category/hu9uihiubu7ig',
-                    },
-                    {
-                      path: '/category/sub-category/another-sub-category/hu9uihiubu7ig',
-                    },
-                  ]"
-                  :key="i"
-                  @click="router.push(item.path)"
-                />
-              </div>
+              ></div>
             </div>
           </div>
         </div>
@@ -141,7 +82,56 @@
 </template>
 <script lang="ts" setup>
 import { usePage } from '~/stores/page'
+const props = defineProps({
+  items: {
+    type: Array,
+    default: () => {
+      return [
+        {
+          _id: '23dkjhkjd23',
+          image:
+            'https://images.pexels.com/photos/1267320/pexels-photo-1267320.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+          distance: {
+            amount: 200,
+            type: 'm',
+          },
+          name: "Sloppy Joe's Dirty Greasy burger palace",
+          tags: ['Hallal', 'Burgers', 'Spicy', 'Laksa'],
+          shortLocation: 'Dordrecht, Hartmanstraat 1198',
+        },
+        {
+          _id: 'd3dkasdfkjd23',
+          image:
+            'https://images.pexels.com/photos/1267320/pexels-photo-1267320.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+          distance: {
+            amount: 200,
+            type: 'm',
+          },
+          name: "Sloppy Joe's Dirty Greasy burger palace",
+          tags: ['Hallal', 'Burgers', 'Spicy', 'Laksa'],
+          shortLocation: 'Dordrecht, Hartmanstraat 1198',
+        },
+        {
+          _id: '32kjh23d',
+          image:
+            'https://images.pexels.com/photos/1267320/pexels-photo-1267320.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+          distance: {
+            amount: 200,
+            type: 'm',
+          },
+          name: "Sloppy Joe's Dirty Greasy burger palace",
+          tags: ['Hallal', 'Burgers', 'Spicy', 'Laksa'],
+          shortLocation: 'Dordrecht, Hartmanstraat 1198',
+        },
+      ]
+    },
+  },
+})
 
+// methods
+const gotoPage = (id) => {
+  console.log('id', id)
+}
 const page = usePage()
 const router = useRouter()
 </script>

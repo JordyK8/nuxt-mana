@@ -1,43 +1,36 @@
 <template>
-  <PageWrapper>
+  <PageWrapper class="px-0 mx-0">
     <PageHeader>
-      <PageTitle :text="$t('pages.dashboard.index.title')" class="capitalize" />
+      <PageTitle :text="client.businessName" class="uppercase" />
     </PageHeader>
     <PageBody>
-      <PageSection>
-        <h1>{{ client.businessName }}</h1>
-        <div>
-          MENU
-          <h2>FOOD</h2>
-          <div v-for="category of client.menu.food">
-            <h3>{{ category.name }}</h3>
-            <div v-for="item of category.items" class="ml-4">
-              <span>{{ item.name }}: </span>
-              <span v-for="price of item.prices">
-                {{ price.name }}: {{ price.amount }} {{ price.currency }},
-              </span>
-            </div>
-          </div>
-          <h2>DRINKS</h2>
-          <div v-for="category of client.menu.beverages">
-            <h3>{{ category.name }}</h3>
-            <div v-for="item of category.items" class="ml-4">
-              <span>{{ item.name }}: </span>
-              <span v-for="price of item.prices">
-                {{ price.name }}: {{ price.amount }} {{ price.currency }},
-              </span>
-            </div>
-          </div>
+      <PageSection class="px-0 mx-0">
+        <div class="w-full">
+          <img
+            class="w-full"
+            src="https://webthemez.com/wp-content/uploads/2017/02/Kitchen-Restaurant-Bootstrap-4-Website-Template.jpg"
+            alt=""
+          />
         </div>
+        <Menu />
         <br /><br />
         <div>
           <h2>Rating</h2>
-          <span>Stars: {{client.rating.stars}} - Ranked: {{client.rating.ranking.place}} in area: {{client.rating.ranking.location}} within radis of  {{client.rating.ranking.radius}} {{client.rating.ranking.radiusType}}</span>
-          <div v-for="review of client.rating.reviews">
-            <div v-for="review of client.rating.reviews">
-              <p></p>
+          <span
+            >Stars: {{ client.rating.stars }} - Ranked:
+            {{ client.rating.ranking.place }} in area:
+            {{ client.rating.ranking.location }} within radis of
+            {{ client.rating.ranking.radius }}
+            {{ client.rating.ranking.radiusType }}</span
+          >
+          <div v-for="review of client.rating.reviews" class="mb-5">
+            <div
+              class="h-6 relative bg-green-600 rounded-full px-2 py-1 text-xs font-semibold text-white ml-10 inline-flex"
+            >
+              3.1<IconMdi:star class="text-xs align-top" />
             </div>
-            
+            <span class="ml-2"> {{ review.date }}</span>
+            <p class="ml-10">{{review.content}}</p>
           </div>
         </div>
       </PageSection>
@@ -166,37 +159,36 @@ const props = defineProps({
             radiusType: 'km',
           },
           stars: 4,
-          reviews: {
-            one: [],
-            two: [],
-            three: [
-              {
-                name: 'Josh',
-                link: '/revies/josh88',
-                content:
-                  'Great place but I think the service could use a boost. Food was great though.',
-                order: { food: ['Asam Laksa'], drink: ['Teh Tarik'] },
-              },
-            ],
-            four: [
-              {
-                name: 'Janine',
-                link: '/revies/janineS8',
-                content: 'Best Laksa of the country',
-                order: { food: ['Asam Laksa'], beverages: ['Teh Tarik'] },
-              },
-            ],
-            five: [
-              {
-                name: 'Moe',
-                link: '/revies/moegeTe',
-                content:
-                  'I have not found any better Laksa like this before lah.',
-                order: { food: ['Kuching Laksa'], beverages: [] },
-              },
-            ],
-          },
+          reviews: [
+            {
+              stars: 3,
+              date: new Date().toDateString(),
+              name: 'Josh',
+              link: '/revies/josh88',
+              content:
+                'Great place but I think the service could use a boost. Food was great though.',
+              order: { food: ['Asam Laksa'], drink: ['Teh Tarik'] },
+            },
+            {
+              stars: 4,
+              date: new Date().toDateString(),
+              name: 'Janine',
+              link: '/revies/janineS8',
+              content: 'Best Laksa of the country',
+              order: { food: ['Asam Laksa'], beverages: ['Teh Tarik'] },
+            },
+            {
+              stars: 5,
+              date: new Date().toDateString(),
+              name: 'Moe',
+              link: '/revies/moegeTe',
+              content:
+                'I have not found any better Laksa like this before lah.',
+              order: { food: ['Kuching Laksa'], beverages: [] },
+            },
+          ],
         },
+        tags: ['Hallal', 'Burgers', 'Spicy', 'Laksa'],
       }
     },
   },

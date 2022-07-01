@@ -12,6 +12,7 @@ declare module '@vue/runtime-core' {
     'IconMdi:expandMore': typeof import('~icons/mdi/expand-more')['default']
     'IconMdi:keepOutline': typeof import('~icons/mdi/keep-outline')['default']
     'IconMdi:messageTextOutline': typeof import('~icons/mdi/message-text-outline')['default']
+    'IconMdi:star': typeof import('~icons/mdi/star')['default']
     'IconSimpleIcons:nuxtdotjs': typeof import('~icons/simple-icons/nuxtdotjs')['default']
     'IconUil:bars': typeof import('~icons/uil/bars')['default']
     'IconUil:times': typeof import('~icons/uil/times')['default']
